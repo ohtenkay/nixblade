@@ -116,6 +116,8 @@
     home-manager
         alacritty
         fuzzel
+        bitwarden-desktop
+        xwayland-satellite
   ];
 
   fonts.packages = with pkgs; [
