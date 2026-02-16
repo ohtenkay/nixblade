@@ -130,23 +130,30 @@
         xwayland-satellite
   ];
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-  ];
-
- fonts.fontconfig = {
-    enable = true;
-
-    defaultFonts = {
-      monospace = [ "JetBrainsMono Nerd Font" ];
-      sansSerif = [ "JetBrainsMono Nerd Font" ];
-      serif = [ "JetBrainsMono Nerd Font" ];
-    };
-  };
-
   stylix = {
         enable = true;
         base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa-dragon.yaml";
+        fonts = {
+              monospace = {
+                package = pkgs.nerd-fonts.jetbrains-mono;
+                name = "JetBrainsMono Nerd Font Mono";
+              };
+
+              sansSerif = {
+                package = pkgs.nerd-fonts.jetbrains-mono;
+                name = "JetBrainsMono Nerd Font";
+              };
+
+              serif = {
+                package = pkgs.nerd-fonts.jetbrains-mono;
+                name = "JetBrainsMono Nerd Font";
+              };
+
+              emoji = {
+                package = pkgs.noto-fonts-color-emoji;
+                name = "Noto Color Emoji";
+              };
+            };
     };
 
   # Some programs need SUID wrappers, can be configured further or are
