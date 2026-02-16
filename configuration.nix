@@ -55,7 +55,7 @@
   #   variant = "";
   # };
 
-    # TODO collect old generations
+    # TODO: collect old generations
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -92,6 +92,16 @@
   # Install firefox.
   programs.firefox.enable = true;
   programs.niri.enable = true;
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "niri";
+        user = "ondrej";
+      };
+    };
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
