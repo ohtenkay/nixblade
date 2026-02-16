@@ -43,17 +43,17 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  # services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
+  # services.xserver.displayManager.lightdm.enable = true;
+  # services.xserver.desktopManager.xfce.enable = true;
+  #
+  # # Configure keymap in X11
+  # services.xserver.xkb = {
+  #   layout = "us";
+  #   variant = "";
+  # };
 
     # TODO collect old generations
 
@@ -91,6 +91,7 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+  programs.niri.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -113,7 +114,23 @@
 
     nodejs_25
     home-manager
+        alacritty
+        fuzzel
   ];
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+  ];
+
+ fonts.fontconfig = {
+    enable = true;
+
+    defaultFonts = {
+      monospace = [ "JetBrainsMono Nerd Font" ];
+      sansSerif = [ "JetBrainsMono Nerd Font" ];
+      serif = [ "JetBrainsMono Nerd Font" ];
+    };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
