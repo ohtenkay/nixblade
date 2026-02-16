@@ -147,12 +147,12 @@ boot.loader.grub = {
 
               sansSerif = {
                 package = pkgs.nerd-fonts.jetbrains-mono;
-                name = "JetBrainsMono Nerd Font";
+                name = "JetBrainsMono Nerd Font Mono";
               };
 
               serif = {
                 package = pkgs.nerd-fonts.jetbrains-mono;
-                name = "JetBrainsMono Nerd Font";
+                name = "JetBrainsMono Nerd Font Mono";
               };
 
               emoji = {
