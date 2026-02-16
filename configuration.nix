@@ -144,6 +144,11 @@
     };
   };
 
+  stylix = {
+        enable = true;
+        base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa-dragon.yaml";
+    };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
