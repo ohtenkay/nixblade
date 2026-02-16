@@ -2,23 +2,28 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   # boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-boot.loader.grub = {
-  enable = true;
-  efiSupport = true;
-  device = "nodev";
-  useOSProber = true;
-};
+  boot.loader.grub = {
+    enable = true;
+    efiSupport = true;
+    device = "nodev";
+    useOSProber = true;
+  };
 
   networking.hostName = "nixblade"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -61,7 +66,7 @@ boot.loader.grub = {
   #   variant = "";
   # };
 
-    # TODO: collect old generations
+  # TODO: collect old generations
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -89,9 +94,12 @@ boot.loader.grub = {
   users.users.ondrej = {
     isNormalUser = true;
     description = "ondrej";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -112,55 +120,65 @@ boot.loader.grub = {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     neovim
-     kitty
-     git
+    neovim
+    kitty
+    git
     lazygit
-     wget
+    wget
 
     # neovim config dependencies
-     gcc
-     tree-sitter
-        unzip
+    gcc
+    tree-sitter
+    unzip
 
     nodejs_25
     home-manager
-        alacritty
-        fuzzel
-        bitwarden-desktop
-        xwayland-satellite
+    alacritty
+    fuzzel
+    bitwarden-desktop
+    xwayland-satellite
+
+    nixfmt
+    nixd
   ];
 
+  # For nixd, enables custom options
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+
   stylix = {
-        enable = true;
-        base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa-dragon.yaml";
-        fonts = {
-              monospace = {
-                package = pkgs.nerd-fonts.jetbrains-mono;
-                name = "JetBrainsMono Nerd Font Mono";
-              };
+    enable = true;
+    # https://tinted-theming.github.io/tinted-gallery/
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa-dragon.yaml";
+    fonts = {
+      monospace = {
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrainsMono Nerd Font Mono";
+      };
 
-              sansSerif = {
-                package = pkgs.nerd-fonts.jetbrains-mono;
-                name = "JetBrainsMono Nerd Font Mono";
-              };
+      sansSerif = {
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrainsMono Nerd Font Mono";
+      };
 
-              serif = {
-                package = pkgs.nerd-fonts.jetbrains-mono;
-                name = "JetBrainsMono Nerd Font Mono";
-              };
+      serif = {
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrainsMono Nerd Font Mono";
+      };
 
-              emoji = {
-                package = pkgs.noto-fonts-color-emoji;
-                name = "Noto Color Emoji";
-              };
-            };
+      emoji = {
+        package = pkgs.noto-fonts-color-emoji;
+        name = "Noto Color Emoji";
+      };
     };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
