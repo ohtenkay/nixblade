@@ -32,14 +32,15 @@
           inherit inputs;
         };
         modules = [
-          stylix.nixosModules.stylix
           ./configuration.nix
+          stylix.nixosModules.stylix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.ondrej = import ./home.nix;
+          }
         ];
-      };
-
-      homeConfigurations.ondrej = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
-        modules = [ ./home.nix ];
       };
     };
 }
