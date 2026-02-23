@@ -16,10 +16,16 @@
     ];
   };
 
-  programs.bash = {
-    enable = true;
-    shellAliases = {
-      rebuild = "sudo nixos-rebuild switch --flake ~/nixblade";
+  programs = {
+    bash = {
+      enable = true;
+      shellAliases = {
+        rebuild = "sudo nixos-rebuild switch --flake ~/nixblade";
+      };
+    };
+
+    kitty = {
+      enable = true;
     };
   };
 }

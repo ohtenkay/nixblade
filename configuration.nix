@@ -84,6 +84,8 @@
     git
     lazygit
     wget
+    ripgrep
+    fd
 
     gcc
     tree-sitter
@@ -114,6 +116,9 @@
     wiremix
 
     opencode
+    wifitui
+
+    python3
   ];
 
   # For nixd, enables custom options
