@@ -13,6 +13,8 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    gazelle.url = "github:Zeus-Deus/gazelle-tui";
   };
 
   outputs =
@@ -40,6 +42,9 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users.ondrej = import ./home.nix;
+              extraSpecialArgs = {
+                inherit inputs;
+              };
             };
           }
         ];

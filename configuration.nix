@@ -105,6 +105,15 @@
     jdk25
     maven
     jdt-language-server
+
+    haskell-language-server
+    ghc
+    cabal-install
+    hlint
+
+    wiremix
+
+    opencode
   ];
 
   # For nixd, enables custom options
