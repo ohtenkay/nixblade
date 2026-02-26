@@ -1,12 +1,11 @@
 { ... }:
 {
-  flake.modules.nixos.base =
+  flake.modules.nixos.dev =
     { pkgs, ... }:
     {
-      networking.networkmanager.enable = true;
-
       environment.systemPackages = with pkgs; [
-        wifitui
+        nixd
+        nixfmt
       ];
     };
 }

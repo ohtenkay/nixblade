@@ -5,8 +5,6 @@
     {
       environment.systemPackages = with pkgs; [
         neovim
-        kitty
-        alacritty
         git
         lazygit
         wget
@@ -22,29 +20,15 @@
         nodejs_25
         home-manager
 
-        nixfmt
-        nixd
-
-        jdk21
-        maven
-        jdt-language-server
-        lombok
-
-        haskell-language-server
-        ghc
-        cabal-install
-        hlint
-
-        wiremix
+        python3
 
         opencode
-        wifitui
-
-        python3
 
         lazysql
 
         vlc
+        ddcutil
+        ddcui
       ];
     };
 }
