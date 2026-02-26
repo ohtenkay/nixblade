@@ -1,7 +1,7 @@
-{ inputs, ... }:
+{ ... }:
 {
   flake.modules.nixos.base =
-    { pkgs, ... }:
+    { ... }:
     {
       home-manager.users.ondrej = {
         home = {
@@ -9,9 +9,6 @@
           homeDirectory = "/home/ondrej";
           stateVersion = "25.11";
 
-          packages = [
-            inputs.gazelle.packages.${pkgs.system}.default
-          ];
         };
 
         programs = {
