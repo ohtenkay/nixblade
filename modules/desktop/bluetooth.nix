@@ -1,7 +1,13 @@
 { ... }:
 {
-  flake.modules.nixos.desktop = {
-    hardware.bluetooth.enable = true;
-    services.blueman.enable = true;
-  };
+  flake.modules.nixos.desktop =
+    { pkgs, ... }:
+    {
+      hardware.bluetooth.enable = true;
+      services.blueman.enable = true;
+
+      environment.systemPackages = with pkgs; [
+        bluetui
+      ];
+    };
 }

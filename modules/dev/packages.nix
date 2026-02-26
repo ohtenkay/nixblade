@@ -45,8 +45,6 @@
         lazysql
 
         vlc
-
-        bluetui
       ];
     };
 }
