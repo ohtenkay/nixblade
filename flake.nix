@@ -1,5 +1,5 @@
 {
-  description = "Nixblade system configuration";
+  description = "NixOS system infrastructure for my personal machines";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -24,37 +24,5 @@
     gazelle.url = "github:Zeus-Deus/gazelle-tui";
   };
 
-  outputs =
-    inputs@{
-      nixpkgs,
-      home-manager,
-      stylix,
-      ...
-    }:
-    let
-      system = "x86_64-linux";
-    in
-    {
-      nixosConfigurations.nixblade = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit inputs;
-        };
-        modules = [
-          ./configuration.nix
-          stylix.nixosModules.stylix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.ondrej = import ./home.nix;
-              extraSpecialArgs = {
-                inherit inputs;
-              };
-            };
-          }
-        ];
-      };
-    };
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 }
