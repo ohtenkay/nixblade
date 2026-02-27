@@ -9,6 +9,7 @@ in
       nixos.base
       nixos.desktop
       nixos.dev
+      nixos.shell
       nixos.stylix
       nixos.nixblade-hardware
     ];

@@ -4,7 +4,6 @@
     { pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [
-        neovim
         git
         lazygit
         wget
@@ -29,6 +28,8 @@
         vlc
         ddcutil
         ddcui
+
+        yt-dlp
       ];
     };
 }

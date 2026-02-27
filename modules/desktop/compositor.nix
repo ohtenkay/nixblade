@@ -20,5 +20,9 @@
         xwayland-satellite
         fuzzel
       ];
+
+      home-manager.users.ondrej.programs.kitty = {
+        enable = true;
+      };
     };
 }
