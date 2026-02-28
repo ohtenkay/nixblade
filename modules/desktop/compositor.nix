@@ -40,6 +40,12 @@
         programs.niri.settings = {
           prefer-no-csd = true;
 
+          layout = {
+            gaps = 0;
+            border.enable = false;
+            focus-ring.enable = false;
+          };
+
           environment."NIXOS_OZONE_WL" = "1";
 
           binds = {
