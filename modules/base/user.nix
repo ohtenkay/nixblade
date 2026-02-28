@@ -4,42 +4,48 @@ let
   flakeRoot = "/home/ondrej/nixblade";
 in
 {
-  flake.modules.nixos.base = {
-    imports = [ inputs.home-manager.nixosModules.home-manager ];
+  flake.modules.nixos.base =
+    { pkgs, ... }:
+    {
+      imports = [ inputs.home-manager.nixosModules.home-manager ];
 
-    # Make flakeRoot available to all NixOS modules as a module argument.
-    _module.args.flakeRoot = flakeRoot;
+      # Make flakeRoot available to all NixOS modules as a module argument.
+      _module.args.flakeRoot = flakeRoot;
 
-    users.users.ondrej = {
-      isNormalUser = true;
-      description = "ondrej";
-      extraGroups = [
-        "networkmanager"
-        "wheel"
-      ];
-    };
+      # Required for zsh to be a valid login shell.
+      programs.zsh.enable = true;
 
-    home-manager = {
-      useGlobalPkgs = true;
-      useUserPackages = true;
-      backupFileExtension = "bak";
-      # Make flakeRoot available to all Home Manager modules as a module argument.
-      extraSpecialArgs = { inherit flakeRoot; };
-    };
-
-    home-manager.users.ondrej = {
-      home = {
-        username = "ondrej";
-        homeDirectory = "/home/ondrej";
-        stateVersion = "25.11";
+      users.users.ondrej = {
+        isNormalUser = true;
+        description = "ondrej";
+        shell = pkgs.zsh;
+        extraGroups = [
+          "networkmanager"
+          "wheel"
+        ];
       };
 
-      programs.bash = {
-        enable = true;
-        shellAliases = {
-          rebuild = "sudo nixos-rebuild switch --flake ~/nixblade";
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        backupFileExtension = "bak";
+        # Make flakeRoot available to all Home Manager modules as a module argument.
+        extraSpecialArgs = { inherit flakeRoot; };
+      };
+
+      home-manager.users.ondrej = {
+        home = {
+          username = "ondrej";
+          homeDirectory = "/home/ondrej";
+          stateVersion = "25.11";
+        };
+
+        programs.bash = {
+          enable = true;
+          shellAliases = {
+            rebuild = "sudo nixos-rebuild switch --flake ~/nixblade";
+          };
         };
       };
     };
-  };
 }

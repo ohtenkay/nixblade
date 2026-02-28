@@ -21,6 +21,8 @@
         python3
 
         opencode
+        qbittorrent
+        brave
 
         lazysql
 

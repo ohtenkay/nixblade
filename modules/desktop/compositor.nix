@@ -9,6 +9,8 @@
       programs.firefox.enable = true;
       programs.niri.enable = true;
 
+      environment.variables.BROWSER = "firefox";
+
       services.greetd = {
         enable = true;
         settings = {
@@ -27,7 +29,12 @@
       home-manager.users.ondrej = {
         programs.kitty = {
           enable = true;
-          settings.hide_window_decorations = true;
+          settings = {
+            hide_window_decorations = true;
+            shell = "zsh";
+            cursor_trail = 3;
+            enable_audio_bell = false;
+          };
         };
 
         programs.niri.settings = {
