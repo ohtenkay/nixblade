@@ -22,6 +22,7 @@ in
     home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;
+      backupFileExtension = "bak";
       # Make flakeRoot available to all Home Manager modules as a module argument.
       extraSpecialArgs = { inherit flakeRoot; };
     };
