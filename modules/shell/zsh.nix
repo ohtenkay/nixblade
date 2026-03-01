@@ -14,7 +14,7 @@
             shellAliases = {
               rebuild = "sudo nixos-rebuild switch --flake ~/nixblade";
             };
-            initExtra = ''
+            initContent = ''
               eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"
             '';
           };

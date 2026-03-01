@@ -47,7 +47,7 @@
         glib
         pcre2
         libepoxy
-        xorg.libX11
+        libX11
       ];
 
       users.users.ondrej.extraGroups = [
