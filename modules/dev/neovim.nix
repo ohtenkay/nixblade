@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.nixos.dev =
+  flake.modules.nixos.neovim =
     { flakeRoot, pkgs, ... }:
     {
       home-manager.users.ondrej =

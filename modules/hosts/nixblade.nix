@@ -1,17 +1,16 @@
 # Declares the nixblade NixOS configuration by composing named modules.
 { config, ... }:
-let
-  nixos = config.flake.modules.nixos;
-in
 {
   configurations.nixos.nixblade.module = {
-    imports = [
-      nixos.base
-      nixos.desktop
-      nixos.dev
-      nixos.shell
-      nixos.stylix
-      nixos.nixblade-hardware
+    imports = with config.flake.modules.nixos; [
+      base
+      desktop
+      dev
+      shell
+      stylix
+      nixblade-hardware
+      # nvidia
+      neovim
     ];
 
     networking.hostName = "nixblade";

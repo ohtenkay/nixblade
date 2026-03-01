@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.nixos.nixblade-hardware =
+  flake.modules.nixos.nvidia =
     { config, ... }:
     {
       # Enable graphics acceleration (OpenGL, Vulkan, etc.)
