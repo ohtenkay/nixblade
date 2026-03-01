@@ -1,22 +1,27 @@
 # Declares the nixblade NixOS configuration by composing named modules.
-{ config, ... }:
+{ config, inputs, ... }:
+let
+  nixos = config.flake.modules.nixos;
+in
 {
-  configurations.nixos.nixblade.module = {
-    imports = with config.flake.modules.nixos; [
-      base
-      desktop
-      dev
-      shell
-      stylix
-      nixblade-hardware
-      # nvidia
-      neovim
+  flake.nixosConfigurations.nixblade = inputs.nixpkgs.lib.nixosSystem {
+    modules = [
+      nixos.base
+      nixos.desktop
+      nixos.dev
+      nixos.shell
+      nixos.stylix
+      nixos.nixblade-hardware
+      # nixos.nvidia
+      nixos.neovim
+
+      {
+        networking.hostName = "nixblade";
+        nixpkgs.hostPlatform = "x86_64-linux";
+
+        # https://nixos.org/nixos/options.html
+        system.stateVersion = "25.11";
+      }
     ];
-
-    networking.hostName = "nixblade";
-    nixpkgs.hostPlatform = "x86_64-linux";
-
-    # https://nixos.org/nixos/options.html
-    system.stateVersion = "25.11";
   };
 }
