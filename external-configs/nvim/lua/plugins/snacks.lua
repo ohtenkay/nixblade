@@ -12,7 +12,7 @@ return {
     image = { enabled = true },
     lazygit = {
       enabled = true,
-      win = { width = 0, height = 0 },
+      win = { width = 0, height = 0.99 },
     },
     picker = {
       enabled = true,
