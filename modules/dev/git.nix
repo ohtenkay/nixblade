@@ -9,11 +9,13 @@
 
         programs.git = {
           enable = true;
-          settings.user.name = "Ondrej Hlozek";
+          settings.user.name = "Ondřej Hložek";
           includes = [
             { path = config.age.secrets.git-email.path; }
           ];
         };
+
+        programs.delta.enable = true;
       };
   };
 }
