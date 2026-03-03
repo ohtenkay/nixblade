@@ -4,17 +4,6 @@
     { pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [
-        lazygit
-        wget
-        ripgrep
-        fd
-
-        gcc
-        tree-sitter
-        unzip
-        zip
-        lua-language-server
-
         nodejs_25
         home-manager
 
@@ -27,8 +16,6 @@
         lazysql
 
         vlc
-        ddcutil
-        ddcui
 
         yt-dlp
       ];

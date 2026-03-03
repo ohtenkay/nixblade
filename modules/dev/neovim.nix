@@ -12,6 +12,17 @@
 
       environment.systemPackages = with pkgs; [
         neovim
+        stylua
+
+        wget
+        ripgrep
+        fd
+
+        gcc
+        tree-sitter
+        unzip
+        zip
+        lua-language-server
       ];
 
       environment.variables.EDITOR = "nvim";
