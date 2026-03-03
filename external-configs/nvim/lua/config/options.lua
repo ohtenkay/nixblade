@@ -11,6 +11,7 @@ opt.relativenumber = true
 -- Use spaces instead of tabs and set the tab width to 4
 opt.expandtab = true
 opt.shiftwidth = 4
+opt.tabstop = 4
 
 -- Don't show the mode, since it's already in the status line
 opt.showmode = false

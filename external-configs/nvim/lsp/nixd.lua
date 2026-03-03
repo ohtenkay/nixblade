@@ -18,7 +18,9 @@ return {
           expr = ('(builtins.getFlake "%s").nixosConfigurations.nixblade.options'):format(flake),
         },
         home_manager = {
-          expr = ('(builtins.getFlake "%s").nixosConfigurations.nixblade.options.home-manager.users.type.getSubOptions []'):format(flake),
+          expr = ('(builtins.getFlake "%s").nixosConfigurations.nixblade.options.home-manager.users.type.getSubOptions []'):format(
+            flake
+          ),
         },
       },
     },
