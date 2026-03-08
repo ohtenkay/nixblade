@@ -7,4 +7,5 @@ vim.lsp.enable {
   'nixd',
   'jdtls',
   'hls',
+  'rust_analyzer',
 }
