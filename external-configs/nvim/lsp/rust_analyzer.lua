@@ -7,8 +7,8 @@ return {
       check = {
         features = 'all',
         command = 'clippy',
+        allTargets = true,
         extraArgs = {
-          '--all-targets',
           '--',
           '-W',
           'clippy::pedantic',

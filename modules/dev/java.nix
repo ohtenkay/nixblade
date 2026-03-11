@@ -4,7 +4,7 @@
     { pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [
-        jdk21
+        jdk25
         maven
         jdt-language-server
         lombok

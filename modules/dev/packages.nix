@@ -10,6 +10,7 @@
         python3
 
         opencode
+        bitwarden-desktop
         qbittorrent
         brave
 
