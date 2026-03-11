@@ -8,4 +8,5 @@ vim.lsp.enable {
   'jdtls',
   'hls',
   'rust_analyzer',
+  'gopls',
 }
